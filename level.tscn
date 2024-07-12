@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bt2tx543l1elf"]
 
 [ext_resource type="Texture2D" uid="uid://bdtms0r6m378d" path="res://texture_07.png" id="1_sobvr"]
-[ext_resource type="PackedScene" path="res://Car_rb.tscn" id="2_xqhmb"]
+[ext_resource type="PackedScene" uid="uid://bb8x763ruul7r" path="res://Car_rb.tscn" id="2_xqhmb"]
 
 [sub_resource type="Environment" id="Environment_esxsr"]
 
@@ -23,6 +23,7 @@ environment = SubResource("Environment_esxsr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.857095, -0.369447, -0.359021, 0.501014, 0.435611, 0.747816, -0.119885, -0.820824, 0.558458, 0, 0, 0)
+shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_pgdtn")

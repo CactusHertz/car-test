@@ -19,10 +19,5 @@ func _physics_process(delta: float) -> void:
 	rotation.y += - input_vector.x * steering_factor * delta
 	
 	apply_central_force(basis * movement_velocity)
-	
 	apply_central_force(basis* Vector3.DOWN * gravity_force)
-
-
-func raycast_hit():
-	pass
 
