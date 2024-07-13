@@ -3,7 +3,7 @@ extends RigidBody3D
 var speed := 40
 var steering_factor := 3.0
 
-var gravity_force := 9.0
+var gravity_force := 50.0
 
 func _ready() -> void:
 	pass

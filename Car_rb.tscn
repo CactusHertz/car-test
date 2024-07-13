@@ -24,5 +24,7 @@ shape = SubResource("BoxShape3D_k7ug8")
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 4.26739)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(2.08165e-12, -4, 2.08165e-12)
+target_position = Vector3(0, -5, 0)
 script = ExtResource("2_36moc")
+ride_height = -4.0
+ride_spring_damper = 5.0

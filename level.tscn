@@ -34,5 +34,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qga2g")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.955077, 0.296358, 0, -0.296358, 0.955077, 0, 0, 0, 1, -387.059, 56.0609, 0)
+mesh = SubResource("PlaneMesh_pgdtn")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qga2g")
+
 [node name="Car" parent="." instance=ExtResource("2_xqhmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.629413, 1.08582, 4.33549)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.629413, 12.1083, 4.33549)
