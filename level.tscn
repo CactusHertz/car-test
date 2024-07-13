@@ -25,24 +25,44 @@ environment = SubResource("Environment_esxsr")
 transform = Transform3D(0.857095, -0.369447, -0.359021, 0.501014, 0.435611, 0.747816, -0.119885, -0.820824, 0.558458, 0, 0, 0)
 shadow_enabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_pgdtn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qga2g")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="Floor2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.955077, 0.296358, 0, -0.296358, 0.955077, 0, 0, 0, 1, -387.059, 56.0609, 0)
 mesh = SubResource("PlaneMesh_pgdtn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qga2g")
+
+[node name="Floor4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.17565e-08, -1.29258e-08, -1, -0.295708, 0.955278, 0, 0.955278, 0.295708, -4.37114e-08, 0, 56.061, -400)
+mesh = SubResource("PlaneMesh_pgdtn")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qga2g")
+
+[node name="Floor3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.615596, 0.191018, -0.764562, -0.296358, 0.955077, 0, 0.730215, 0.226584, 0.644551, -261.399, 56.0609, -300.897)
+mesh = SubResource("PlaneMesh_pgdtn")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qga2g")
 
 [node name="Car" parent="." instance=ExtResource("2_xqhmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.629413, 12.1083, 4.33549)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 44.68, 0)

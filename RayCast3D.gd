@@ -38,9 +38,13 @@ func apply_spring_force(delta):
 func align_to_normal(delta):
 	var normal := get_collision_normal()
 	
-	var up := Vector3(0,1,0)
+	print(normal)
 	
-	var target_rotation = up.cross(normal).normalized()
+	'''
+	var forward = transform.basis.z
+	var right = normal.cross(forward).normalized()
+	var up = -right.cross(forward).normalized()
+	car.transform.basis = Basis(right, up, forward)
 	
-	# print(target_rotation)
-	# var target_quat = Quat(up, normal).slerp(basis.get_rotation_quat(), 0.1)
+	print(car.transform.basis, Basis(right, up, forward))'''
+
