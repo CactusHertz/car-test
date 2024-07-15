@@ -15,7 +15,7 @@ func _physics_process(delta):
 	if is_colliding():
 		apply_spring_force(delta)
 		
-		align_to_normal(delta)
+		#align_to_normal(delta)
 	
 
 func apply_spring_force(delta):
