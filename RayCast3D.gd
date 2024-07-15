@@ -40,6 +40,16 @@ func align_to_normal(delta):
 	
 	print(normal)
 	
+	var target_up = get_collision_normal()
+	var current_up = global_transform.basis.y
+	var rotation_to_target = current_up.cross(target_up).normalized()
+	var angle_to_target = acos(current_up.dot(target_up))
+	var rotation_delta = rotation_to_target * angle_to_target * delta * 10
+	car.angular_velocity = car.angular_velocity.lerp(rotation_delta, 0.1)
+	#var rotation_axis = Vector3.UP.cross(normal).normalized()
+	#var rotation_angle = Vector3.UP.angle_to(normal)
+	#car.transform.basis = Basis(rotation_axis, rotation_angle)
+
 	'''
 	var forward = transform.basis.z
 	var right = normal.cross(forward).normalized()
