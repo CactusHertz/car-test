@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bb8x763ruul7r"]
+[gd_scene load_steps=9 format=3 uid="uid://bb8x763ruul7r"]
 
 [ext_resource type="Script" path="res://Car_rb.gd" id="1_jy7vu"]
 [ext_resource type="Texture2D" uid="uid://bmjdjcr1uoale" path="res://Textures/texture_04.png" id="2_1sdff"]
 [ext_resource type="Script" path="res://RayCast3D.gd" id="2_36moc"]
+[ext_resource type="PackedScene" uid="uid://ckb86wnn0ucoq" path="res://ui.tscn" id="4_unieb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bt7b4"]
 friction = 0.0
@@ -45,3 +46,5 @@ ride_height = -4.0
 ride_spring_damper = 5.0
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("4_unieb")]

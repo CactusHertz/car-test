@@ -14,12 +14,14 @@ var is_grounded := false
 
 @onready var ray : RayCast3D = %RayCast3D
 @onready var body : MeshInstance3D = %CarBody
+@onready var mph_lable : Label = $UI/Label
 
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
 	apply_movement(delta)
+	update_ui()
 
 func _integrate_forces(state):
 	pass
@@ -58,3 +60,5 @@ func orient_car(direction: Vector3, delta: float) -> void:
 		rotation_basis, delta * rotation_speed
 	)
 
+func update_ui():
+	mph_lable.text = str(linear_velocity.length())
