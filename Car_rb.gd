@@ -31,6 +31,7 @@ func apply_movement(delta: float):
 	transform.basis = Basis(Vector3.UP, -steering_factor * input_vector.x * delta) * transform.basis
 	tilt_body(delta,input_vector)
 	
+	
 	apply_central_force(basis * movement_velocity)
 	apply_central_force(basis * Vector3.DOWN * gravity_force)
 

@@ -1,15 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb8x763ruul7r"]
+[gd_scene load_steps=8 format=3 uid="uid://bb8x763ruul7r"]
 
 [ext_resource type="Script" path="res://Car_rb.gd" id="1_jy7vu"]
+[ext_resource type="Texture2D" uid="uid://bmjdjcr1uoale" path="res://Textures/texture_04.png" id="2_1sdff"]
 [ext_resource type="Script" path="res://RayCast3D.gd" id="2_36moc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bt7b4"]
 friction = 0.0
 bounce = 1.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_yxw50"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycyvv"]
+albedo_texture = ExtResource("2_1sdff")
+uv1_triplanar = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_togdg"]
+[sub_resource type="BoxMesh" id="BoxMesh_yxw50"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ch6u2"]
 
@@ -24,11 +27,8 @@ script = ExtResource("1_jy7vu")
 [node name="CarBody" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 rotation_edit_mode = 1
+material_override = SubResource("StandardMaterial3D_ycyvv")
 mesh = SubResource("BoxMesh_yxw50")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CarBody"]
-transform = Transform3D(0.423589, 0, 0, 0, 0.423589, 0, 0, 0, 1, 0, 0, -0.881184)
-mesh = SubResource("BoxMesh_togdg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
