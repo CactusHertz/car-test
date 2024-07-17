@@ -35,16 +35,17 @@ mesh = SubResource("BoxMesh_yxw50")
 unique_name_in_owner = true
 shape = SubResource("SphereShape3D_ch6u2")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 4.26739)
-
 [node name="RayCast3D" type="RayCast3D" parent="."]
 unique_name_in_owner = true
-target_position = Vector3(0, -5, 0)
+target_position = Vector3(0, -10, 0)
 script = ExtResource("2_36moc")
 ride_height = -4.0
-ride_spring_damper = 5.0
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("4_unieb")]
+
+[node name="CameraAnchor" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraAnchor"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 4.26739)

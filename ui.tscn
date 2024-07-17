@@ -2,6 +2,19 @@
 
 [node name="UI" type="CanvasLayer"]
 
-[node name="Label" type="Label" parent="."]
+[node name="mph" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+text = "linear velocity: "
+
+[node name="gravity" type="Label" parent="."]
+offset_top = 27.0
+offset_right = 40.0
+offset_bottom = 50.0
+text = "gravity: "
+
+[node name="basis" type="Label" parent="."]
+offset_top = 58.0
+offset_right = 40.0
+offset_bottom = 81.0
+text = "basis:"
