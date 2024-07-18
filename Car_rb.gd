@@ -2,7 +2,7 @@ extends RigidBody3D
 
 var speed := 80
 var boost_speed := 120
-var steering_factor := 2.0 #old 2.0
+var steering_factor := 0.2 #old 2.0
 var steering_tilt := 0.4
 
 var gravity_force := 100.0
@@ -23,6 +23,9 @@ var is_grounded := false
 var move_direction := Vector3.ZERO
 var last_strong_direction := Vector3.BACK
 
+var curr_direction := Vector3.BACK
+var target_direction := Vector3.BACK
+
 
 func _ready() -> void:
 	pass
@@ -38,25 +41,26 @@ func _integrate_forces(state):
 func apply_movement(state : PhysicsDirectBodyState3D):
 	var input_vector := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var movement_velocity = Vector3(0, 0, input_vector.y).normalized() * speed
-	transform.basis = Basis(Vector3.UP, -steering_factor * input_vector.x * state.step) * transform.basis
+
 	tilt_body(state.step,input_vector)
 	apply_central_force(basis * movement_velocity)
 	apply_central_force(basis * Vector3.DOWN * gravity_force)
 	
-	if move_direction.length() > 0.1:
-		last_strong_direction = move_direction.normalized()
-	move_direction = get_model_oriented_input()
-	orient_car(last_strong_direction, state.step)
+	var input = get_model_oriented_input()	
+	var slerp_speed = 2.0
+	curr_direction = curr_direction.slerp(input, state.step * slerp_speed)
+	
+	orient_car(basis * curr_direction, state.step)
 
 
 func get_model_oriented_input() -> Vector3:
-	var raw_input = -Input.get_vector("move_left", "move_right", "move_forward", "move_back").normalized()
+	var raw_input = -Input.get_axis("move_left", "move_right")
 	
 	var input := Vector3.ZERO
-	#input.x = raw_input.x * steering_factor
-	input.z = abs(raw_input.y) 
+	input.x = raw_input * steering_factor
+	input.z = 1.0
 	
-	return basis * input
+	return input
 
 func orient_car(direction: Vector3, delta: float) -> void: 
 	if ray.is_colliding():
@@ -64,30 +68,23 @@ func orient_car(direction: Vector3, delta: float) -> void:
 	else:
 		local_gravity = world_gravity
 	
-
 	var left_axis := -local_gravity.cross(direction)
 	var rotation_basis := Basis(left_axis, -local_gravity, direction).orthonormalized()
 	basis = basis.get_rotation_quaternion().slerp(
 		rotation_basis, delta * rotation_speed
 	)
 
-
 func bounce():
 	pass
 
 func tilt_body( delta: float, input_vector: Vector2):
-	var home_tilt := Quaternion()
 	var desired_tilt := Quaternion(Vector3(0,0,1), -input_vector.x * steering_tilt)
-	
-	var target_rotation = desired_tilt
-	var slerp_speed = 5.0
-	
+
+	var slerp_speed = 2.0
 	var current_rot = Quaternion(body.transform.basis)
-	var new_rot = current_rot.slerp(target_rotation, delta* slerp_speed)
+	var new_rot = current_rot.slerp(desired_tilt, delta* slerp_speed)
 	body.transform.basis = Basis(new_rot)
-	#camera_anchor.transform.basis = Basis(new_rot)
-	
-	
+	camera_anchor.transform.basis = Basis(new_rot) 
 
 
 func update_ui():
