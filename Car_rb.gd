@@ -1,7 +1,9 @@
 extends RigidBody3D
 
-var speed := 80
-var boost_speed := 120
+
+var speed := 120.0#80
+var boost_speed := 240.0
+var max_speed := speed
 var steering_factor := 0.2 #old 2.0
 var steering_tilt := 0.4
 
@@ -15,10 +17,11 @@ var is_grounded := false
 
 @onready var ray : RayCast3D = %RayCast3D
 @onready var body : MeshInstance3D = %CarBody
+@onready var camera_anchor : Node3D = $CameraAnchor
+
 @onready var mph_lable : Label = $UI/mph
 @onready var gravity_lable : Label = $UI/gravity
 @onready var basis_lable : Label = $UI/basis
-@onready var camera_anchor : Node3D = $CameraAnchor
 
 var move_direction := Vector3.ZERO
 var last_strong_direction := Vector3.BACK
@@ -27,20 +30,21 @@ var curr_direction := Vector3.BACK
 var target_direction := Vector3.BACK
 
 
-func _ready() -> void:
-	pass
-
-func _physics_process(delta: float) -> void:
-	pass
-
 # state.step = delta
-func _integrate_forces(state):
+func _integrate_forces(state) -> void:
+	
+	if Input.is_action_just_pressed("boost"):
+		max_speed = boost_speed
+		get_node("Timer").start()
+		
+		
 	apply_movement(state)
 	update_ui()
 
 func apply_movement(state : PhysicsDirectBodyState3D):
+	
 	var input_vector := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var movement_velocity = Vector3(0, 0, input_vector.y).normalized() * speed
+	var movement_velocity = Vector3(0, 0, input_vector.y).normalized() * max_speed
 
 	tilt_body(state.step,input_vector)
 	apply_central_force(basis * movement_velocity)
@@ -91,3 +95,7 @@ func update_ui():
 	mph_lable.text = "linear velocity: " + str(linear_velocity.length())
 	gravity_lable.text = "world gravity: " + str(world_gravity) + " local gravity: " + str(local_gravity) 
 	basis_lable.text = "basis: " + str(basis)
+
+
+func _on_timer_timeout():
+	max_speed = speed

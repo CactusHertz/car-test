@@ -44,6 +44,7 @@ directional_shadow_mode = 0
 [node name="Floors" type="Node3D" parent="."]
 
 [node name="Floor" type="MeshInstance3D" parent="Floors"]
+visible = false
 mesh = SubResource("PlaneMesh_pgdtn")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
@@ -97,6 +98,61 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor6/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qga2g")
 
+[node name="Floor7" type="MeshInstance3D" parent="Floors"]
+transform = Transform3D(-4.17565e-08, -1.29258e-08, -1, -0.999263, -0.0383884, 4.22219e-08, -0.0383884, 0.999263, -1.13133e-08, 0, 715.061, -951)
+mesh = SubResource("PlaneMesh_pgdtn")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floors/Floor7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor7/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qga2g")
+
+[node name="Floor8" type="MeshInstance3D" parent="Floors"]
+transform = Transform3D(-4.17565e-08, -1.29258e-08, -1, -0.846193, -0.532877, 4.22219e-08, -0.532877, 0.846193, 1.13133e-08, 0, 958.061, -887)
+mesh = SubResource("PlaneMesh_pgdtn")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floors/Floor8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor8/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qga2g")
+
+[node name="Floor9" type="MeshInstance3D" parent="Floors"]
+transform = Transform3D(-4.17565e-08, -1.29258e-08, -1, -0.466386, -0.884581, 3.09086e-08, -0.884581, 0.466386, 3.09086e-08, 0, 1019.06, -796)
+mesh = SubResource("PlaneMesh_pgdtn")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floors/Floor9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor9/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qga2g")
+
+[node name="Floor10" type="MeshInstance3D" parent="Floors"]
+transform = Transform3D(-4.17565e-08, -1.29258e-08, -1, 0.0383885, -0.999263, 1.13133e-08, -0.999263, -0.0383885, 4.22219e-08, 0, 1053.06, -612)
+mesh = SubResource("PlaneMesh_pgdtn")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floors/Floor10"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor10/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qga2g")
+
+[node name="Floor11" type="MeshInstance3D" parent="Floors"]
+transform = Transform3D(-4.17565e-08, -1.29258e-08, -1, 0.73373, -0.679441, -2.18557e-08, -0.679441, -0.73373, 3.78551e-08, 0, 967.061, -399)
+mesh = SubResource("PlaneMesh_pgdtn")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sdnpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floors/Floor11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors/Floor11/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qga2g")
+
 [node name="Floor3" type="MeshInstance3D" parent="Floors"]
 transform = Transform3D(0.615596, 0.191018, -0.764562, -0.296358, 0.955077, 0, 0.730215, 0.226584, 0.644551, -261.399, 56.0609, -300.897)
 mesh = SubResource("PlaneMesh_pgdtn")
@@ -117,21 +173,27 @@ material_override = SubResource("StandardMaterial3D_7a4j5")
 use_collision = true
 size = Vector3(115, 4, 113)
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.0801, -2, 624)
+material_override = SubResource("StandardMaterial3D_7a4j5")
+use_collision = true
+size = Vector3(4742, 4, 2955)
+
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.92, 2.01743, 35.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.92, 2.01743, 72.5)
 material_override = SubResource("StandardMaterial3D_7a4j5")
 use_collision = true
 size = Vector3(22, 4, 308)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.9203, 2.01743, 178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.9203, 2.01743, 215)
 material_override = SubResource("StandardMaterial3D_7a4j5")
 use_collision = true
 size = Vector3(188, 4, 23)
 
 [node name="CSGSphere3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(30, -420.888, 2.27131e-06, 0, -2.12437e-05, -60, 51.9615, 243, -1.31134e-06, 0, 79.9391, 0)
-use_collision = true
+visible = false
 height = 0.8
 sides = 64
 smooth_faces = false
