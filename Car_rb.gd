@@ -29,6 +29,13 @@ var last_strong_direction := Vector3.BACK
 var curr_direction := Vector3.BACK
 var target_direction := Vector3.BACK
 
+var spawn_location := Vector3(0, 5, 0)
+var max_depth := -30.0
+
+func _process(delta) -> void:
+	if position.y < max_depth:
+		position = spawn_location
+		linear_velocity = Vector3.ZERO
 
 # state.step = delta
 func _integrate_forces(state) -> void:
