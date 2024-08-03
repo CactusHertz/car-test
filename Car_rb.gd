@@ -29,14 +29,21 @@ var last_strong_direction := Vector3.BACK
 var curr_direction := Vector3.BACK
 var target_direction := Vector3.BACK
 
-var spawn_location := Vector3(0, 5, 0)
+var spawn_location : Transform3D
 var max_depth := -30.0
 var last_check_point := spawn_location
 
+func _ready() -> void:
+	spawn_location = transform
+
 func _process(delta) -> void:
-	if position.y < max_depth:
-		position = spawn_location
-		linear_velocity = Vector3.ZERO
+	if position.y < max_depth or Input.is_action_just_pressed("respawn"):
+		respawn()
+
+
+func respawn() -> void:
+	transform = spawn_location
+	linear_velocity = Vector3.ZERO
 
 # state.step = delta
 func _integrate_forces(state) -> void:
@@ -58,7 +65,7 @@ func apply_movement(state : PhysicsDirectBodyState3D):
 	apply_central_force(basis * movement_velocity)
 	apply_central_force(basis * Vector3.DOWN * gravity_force)
 	
-	var input = get_model_oriented_input()	
+	var input = get_model_oriented_input().normalized()
 	var slerp_speed = 2.0
 	curr_direction = curr_direction.slerp(input, state.step * slerp_speed)
 	

@@ -42,9 +42,6 @@ transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0
 shadow_enabled = true
 directional_shadow_mode = 0
 
-[node name="Car" parent="." instance=ExtResource("2_xqhmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 1)
-
 [node name="Floors" type="Node3D" parent="."]
 
 [node name="Floor" type="MeshInstance3D" parent="Floors"]
@@ -199,7 +196,7 @@ use_collision = true
 size = Vector3(191, 4, 743)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="."]
-transform = Transform3D(0.61975, -0.445211, 0.646295, -0.474444, 0.443446, 0.760433, -0.62515, -0.777909, 0.0635973, 808.073, 229.976, 1895.76)
+transform = Transform3D(0.61975, -0.0624171, 0.782313, -0.474444, 0.764252, 0.436831, -0.62515, -0.64189, 0.444031, 927.667, 267.988, 1985.48)
 material_override = SubResource("StandardMaterial3D_7a4j5")
 use_collision = true
 size = Vector3(191, 4, 743)
@@ -231,3 +228,12 @@ smooth_faces = false
 
 [node name="CheckPoint" parent="." instance=ExtResource("3_1kxrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.544048, 1.90735e-06, -80.7999)
+
+[node name="CheckPoint2" parent="." instance=ExtResource("3_1kxrf")]
+transform = Transform3D(1, 1.54268e-08, 5.75737e-08, 0, 0.965926, -0.258819, -5.96046e-08, 0.258819, 0.965926, -61.0661, 24.0778, -296.7)
+
+[node name="CheckPoint3" parent="." instance=ExtResource("3_1kxrf")]
+transform = Transform3D(1, 7.10543e-15, -5.96047e-08, 0, -1, -5.96046e-08, -5.96047e-08, 8.9407e-08, -1, -61.0662, 1056.85, -609.606)
+
+[node name="Car" parent="." instance=ExtResource("2_xqhmb")]
+transform = Transform3D(1, 0, 1.98419e-09, 0, 1, 0, -1.98419e-09, 0, 1, 2, 12, -10)
