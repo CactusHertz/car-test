@@ -31,6 +31,7 @@ var target_direction := Vector3.BACK
 
 var spawn_location := Vector3(0, 5, 0)
 var max_depth := -30.0
+var last_check_point := spawn_location
 
 func _process(delta) -> void:
 	if position.y < max_depth:
