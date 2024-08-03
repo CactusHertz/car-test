@@ -1,17 +1,23 @@
 extends RigidBody3D
 
 
-var speed := 120.0#80
+var speed := 120.0
 var boost_speed := 240.0
 var max_speed := speed
-var steering_factor := 0.2 #old 2.0
-var steering_tilt := 0.4
+
+
+
+var steering_factor := 0.2
+var drift_steering_factor := 0.4
+var max_steering_factor := steering_factor
+var steering_tilt := steering_factor * 2
 
 var gravity_force := 100.0
 var world_gravity := Vector3.DOWN
 var local_gravity := Vector3.DOWN
 var rotation_speed := 10.0
 
+@onready var state_indicator = $StateIndicator
 
 var is_grounded := false 
 
@@ -31,28 +37,27 @@ var target_direction := Vector3.BACK
 
 var spawn_location : Transform3D
 var max_depth := -30.0
-var last_check_point := spawn_location
 
 func _ready() -> void:
 	spawn_location = transform
-
-func _process(delta) -> void:
-	if position.y < max_depth or Input.is_action_just_pressed("respawn"):
-		respawn()
 
 
 func respawn() -> void:
 	transform = spawn_location
 	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
 
 # state.step = delta
 func _integrate_forces(state) -> void:
 	
 	if Input.is_action_just_pressed("boost"):
 		max_speed = boost_speed
+		state_indicator.material_override.albedo_color = Color.ORANGE
 		get_node("Timer").start()
-		
-		
+	
+	if position.y < max_depth or Input.is_action_just_pressed("respawn"):
+		respawn()
+	
 	apply_movement(state)
 	update_ui()
 
@@ -75,8 +80,15 @@ func apply_movement(state : PhysicsDirectBodyState3D):
 func get_model_oriented_input() -> Vector3:
 	var raw_input = -Input.get_axis("move_left", "move_right")
 	
+	if Input.is_action_pressed("drift"):
+		max_steering_factor = drift_steering_factor
+		steering_tilt = drift_steering_factor * 2
+	else:
+		max_steering_factor = steering_factor
+		steering_tilt = steering_factor * 2
+	
 	var input := Vector3.ZERO
-	input.x = raw_input * steering_factor
+	input.x = raw_input * max_steering_factor
 	input.z = 1.0
 	
 	return input
@@ -93,8 +105,6 @@ func orient_car(direction: Vector3, delta: float) -> void:
 		rotation_basis, delta * rotation_speed
 	)
 
-func bounce():
-	pass
 
 func tilt_body( delta: float, input_vector: Vector2):
 	var desired_tilt := Quaternion(Vector3(0,0,1), -input_vector.x * steering_tilt)
@@ -114,3 +124,4 @@ func update_ui():
 
 func _on_timer_timeout():
 	max_speed = speed
+	state_indicator.material_override.albedo_color = Color.WHITE

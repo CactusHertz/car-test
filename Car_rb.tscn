@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb8x763ruul7r"]
+[gd_scene load_steps=12 format=3 uid="uid://bb8x763ruul7r"]
 
 [ext_resource type="Script" path="res://Car_rb.gd" id="1_jy7vu"]
 [ext_resource type="Texture2D" uid="uid://bmjdjcr1uoale" path="res://Textures/texture_04.png" id="2_1sdff"]
 [ext_resource type="Script" path="res://RayCast3D.gd" id="2_36moc"]
 [ext_resource type="PackedScene" uid="uid://ckb86wnn0ucoq" path="res://ui.tscn" id="4_unieb"]
+[ext_resource type="Texture2D" uid="uid://dn0dlxpi2bf6g" path="res://Textures/Light/texture_08.png" id="5_7p25r"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bt7b4"]
 friction = 0.0
@@ -16,6 +17,10 @@ uv1_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_yxw50"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ch6u2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0y6js"]
+albedo_texture = ExtResource("5_7p25r")
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_huuqd"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -55,8 +60,9 @@ wait_time = 2.0
 [node name="Camera3D" type="Camera3D" parent="CameraAnchor"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 4)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="StateIndicator" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.439447)
+material_override = SubResource("StandardMaterial3D_0y6js")
 mesh = SubResource("BoxMesh_huuqd")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
