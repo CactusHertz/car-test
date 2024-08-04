@@ -6,19 +6,11 @@ extends RayCast3D
 @export var ride_spring_damper := 10.0
 @export var ride_spring_strength := 100.0
 
-
-
-func _ready():
-	pass
-
 func _physics_process(delta):
 	if is_colliding():
-		apply_spring_force(delta)
-		
-		#align_to_normal(delta)
-	
+		apply_spring_force()
 
-func apply_spring_force(delta):
+func apply_spring_force():
 	var vel = car.linear_velocity 
 	var ray_dir := global_basis.y
 	
@@ -31,9 +23,4 @@ func apply_spring_force(delta):
 	var spring_force = (x * ride_spring_strength) - (rel_vel * ride_spring_damper)
 	car.apply_central_force(ray_dir * spring_force)
 
-func align_to_normal(delta):
-	var normal := get_collision_normal()
-	
-	#print(normal)
-	
 
