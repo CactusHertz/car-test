@@ -45,15 +45,19 @@ func respawn() -> void:
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
+
 # state.step = delta
 func _integrate_forces(state) -> void:
 	
 	if Input.is_action_pressed("boost"):
-		max_speed = boost_speed
-		state_indicator.material_override.albedo_color = Color.ORANGE
+		start_boost()
 	else:
-		max_speed = speed
-		state_indicator.material_override.albedo_color = Color.WHITE
+		pass
+		#end_boost()
+		
 	
 	if position.y < max_depth or Input.is_action_just_pressed("respawn"):
 		respawn()
@@ -78,8 +82,6 @@ func apply_movement(state : PhysicsDirectBodyState3D, input_vector):
 
 
 func get_model_oriented_input(input_vector) -> Vector3:
-	
-	var raw_input = input_vector.x
 	if Input.is_action_pressed("drift"):
 		max_steering_factor = drift_steering_factor
 		steering_tilt = drift_steering_factor * 2
@@ -88,7 +90,7 @@ func get_model_oriented_input(input_vector) -> Vector3:
 		steering_tilt = steering_factor * 2
 	
 	var input := Vector3.ZERO
-	input.x = raw_input * max_steering_factor
+	input.x = input_vector.x * max_steering_factor
 	input.z = 1.0
 	
 	return input.normalized()
@@ -120,3 +122,11 @@ func update_ui():
 	gravity_lable.text = "world gravity: " + str(world_gravity) + " local gravity: " + str(local_gravity) 
 	basis_lable.text = "basis: " + str(basis)
 
+
+func start_boost():
+	max_speed = boost_speed
+	state_indicator.material_override.albedo_color = Color.ORANGE
+
+func end_boost():
+	max_speed = speed
+	state_indicator.material_override.albedo_color = Color.WHITE

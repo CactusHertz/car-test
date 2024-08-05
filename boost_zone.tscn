@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c47d23skd8f0x"]
+
+[ext_resource type="Script" path="res://BoostZone.gd" id="1_32rji"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8mhkr"]
+size = Vector3(16, 16, 128)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhvbx"]
+transparency = 1
+albedo_color = Color(1, 0.498039, 0, 0.156863)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jlil8"]
+size = Vector3(16, 16, 128)
+
+[node name="BoostZone" type="Area3D"]
+script = ExtResource("1_32rji")
+
+[node name="HitBox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 8, 2.08165e-12)
+shape = SubResource("BoxShape3D_8mhkr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HitBox"]
+material_override = SubResource("StandardMaterial3D_hhvbx")
+mesh = SubResource("BoxMesh_jlil8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
