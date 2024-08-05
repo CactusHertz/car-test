@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0rep2aemfu0g"]
+
+[ext_resource type="Script" path="res://finish_line.gd" id="1_g7h4v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4o07c"]
+size = Vector3(16, 16, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2s0om"]
+transparency = 1
+albedo_color = Color(0.12549, 1, 0, 0.109804)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uv1ns"]
+size = Vector3(16, 16, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pa1ua"]
+
+[node name="FinishLine" type="Area3D"]
+script = ExtResource("1_g7h4v")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+shape = SubResource("BoxShape3D_4o07c")
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="VisualArea" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+material_override = SubResource("StandardMaterial3D_2s0om")
+mesh = SubResource("BoxMesh_uv1ns")
+
+[node name="VisualPointer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -8)
+mesh = SubResource("BoxMesh_pa1ua")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

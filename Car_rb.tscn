@@ -32,6 +32,7 @@ gravity_scale = 1.66533e-16
 continuous_cd = true
 linear_damp = 1.0
 script = ExtResource("1_jy7vu")
+num_checkpoints = 2
 
 [node name="CarBody" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true

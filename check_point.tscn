@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ktwob"]
 size = Vector3(16, 16, 4)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iljbt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcqis"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.109804)
 
@@ -26,7 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
 [node name="VisualArea" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-material_override = SubResource("StandardMaterial3D_iljbt")
+material_override = SubResource("StandardMaterial3D_vcqis")
 mesh = SubResource("BoxMesh_nahpj")
 
 [node name="VisualPointer" type="MeshInstance3D" parent="."]

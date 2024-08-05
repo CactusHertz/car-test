@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt2tx543l1elf"]
+[gd_scene load_steps=11 format=3 uid="uid://bt2tx543l1elf"]
 
 [ext_resource type="Texture2D" uid="uid://bdtms0r6m378d" path="res://Textures/texture_07.png" id="1_sobvr"]
 [ext_resource type="PackedScene" uid="uid://bb8x763ruul7r" path="res://Car_rb.tscn" id="2_xqhmb"]
 [ext_resource type="PackedScene" uid="uid://do7kjl84jbw43" path="res://check_point.tscn" id="3_1kxrf"]
 [ext_resource type="PackedScene" uid="uid://c47d23skd8f0x" path="res://boost_zone.tscn" id="4_px4ug"]
+[ext_resource type="PackedScene" uid="uid://d0rep2aemfu0g" path="res://finish_line.tscn" id="5_gahx1"]
 
 [sub_resource type="Environment" id="Environment_esxsr"]
 background_mode = 1
@@ -243,3 +244,6 @@ size = Vector3(188, 4, 23)
 
 [node name="BoostZone" parent="." instance=ExtResource("4_px4ug")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.2206, 7.62939e-06, 37.2832)
+
+[node name="FinishLine" parent="." instance=ExtResource("5_gahx1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.2985, 0, -118.514)

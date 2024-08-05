@@ -23,9 +23,10 @@ var rotation_speed := 10.0
 @onready var camera_3d = $CameraAnchor/Camera3D
 
 
-@onready var mph_lable : Label = $UI/mph
-@onready var gravity_lable : Label = $UI/gravity
-@onready var basis_lable : Label = $UI/basis
+@onready var lap : Label = $UI/MarginContainer/VBoxContainer/Lap
+@onready var mph_lable : Label = $UI/MarginContainer/VBoxContainer/Mph
+@onready var gravity_lable : Label = $UI/MarginContainer/VBoxContainer/Gravity
+@onready var basis_lable : Label = $UI/MarginContainer/VBoxContainer/Basis
 
 var move_direction := Vector3.ZERO
 var last_strong_direction := Vector3.BACK
@@ -34,6 +35,9 @@ var curr_direction := Vector3.BACK
 var target_direction := Vector3.BACK
 
 var spawn_location : Transform3D
+var checkpoints : Array[Area3D]
+@export_range(1,10,1) var num_checkpoints := 1
+var curr_lap := 0
 var max_depth := -30.0
 
 func _ready() -> void:
@@ -52,11 +56,10 @@ func _process(delta):
 # state.step = delta
 func _integrate_forces(state) -> void:
 	
-	if Input.is_action_pressed("boost"):
+	'''if Input.is_action_pressed("boost"):
 		start_boost()
 	else:
-		pass
-		#end_boost()
+		end_boost()'''
 		
 	
 	if position.y < max_depth or Input.is_action_just_pressed("respawn"):
@@ -118,9 +121,10 @@ func tilt_body( delta: float, input_vector: Vector2):
 	camera_anchor.transform.basis = Basis(new_rot) 
 
 func update_ui():
+	lap.text = "Lap: " + str(curr_lap)
 	mph_lable.text = "linear velocity: " + str(linear_velocity.length())
 	gravity_lable.text = "world gravity: " + str(world_gravity) + " local gravity: " + str(local_gravity) 
-	basis_lable.text = "basis: " + str(basis)
+	basis_lable.text = "test: " + str(checkpoints)
 
 
 func start_boost():
