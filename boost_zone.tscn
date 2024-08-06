@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://BoostZone.gd" id="1_32rji"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8mhkr"]
-size = Vector3(16, 16, 128)
+size = Vector3(32, 16, 128)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhvbx"]
 transparency = 1
 albedo_color = Color(1, 0.498039, 0, 0.156863)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jlil8"]
-size = Vector3(16, 16, 128)
+size = Vector3(32, 16, 128)
 
 [node name="BoostZone" type="Area3D"]
 script = ExtResource("1_32rji")

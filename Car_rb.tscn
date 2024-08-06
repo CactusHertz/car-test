@@ -55,7 +55,7 @@ ride_height = -4.0
 [node name="CameraAnchor" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraAnchor"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 4)
+transform = Transform3D(0.996749, 0.0110536, -0.0798024, 0, 0.990543, 0.137202, 0.0805643, -0.136756, 0.987323, 0, 5.0865, 7.81497)
 
 [node name="StateIndicator" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.439447)

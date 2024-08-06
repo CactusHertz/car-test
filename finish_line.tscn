@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://finish_line.gd" id="1_g7h4v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4o07c"]
-size = Vector3(16, 16, 4)
+size = Vector3(48, 16, 4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2s0om"]
 transparency = 1
 albedo_color = Color(0.12549, 1, 0, 0.109804)
 
 [sub_resource type="BoxMesh" id="BoxMesh_uv1ns"]
-size = Vector3(16, 16, 1)
+size = Vector3(48, 16, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pa1ua"]
 
